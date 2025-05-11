@@ -89,5 +89,5 @@ const reset=()=>{
     count = 0;
     msgcontainer.classList.add("hide");
 }
-newgamebtn.addEventListener("click ",reset);
+newgamebtn.addEventListener("click",reset);
 resetBtn.addEventListener("click",reset);
