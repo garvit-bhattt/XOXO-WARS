@@ -47,9 +47,6 @@ hr{
 .game :hover{
 background-color: bisque;
 }
-#reset{
-    gap: 1rem;
-}
 #reset :hover{
     background-color: bisque;
 }
@@ -79,4 +76,9 @@ footer{
     color: rgb(52, 3, 97);
     font-family: poppins;
 
+}
+.msg-container{
+    font-family: poppins;
+    font-size: 10vmin;
+    color: rgb(52, 3, 97);
 }
