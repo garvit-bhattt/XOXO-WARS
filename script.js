@@ -1,6 +1,7 @@
 let boxes = document.querySelectorAll(".box");
 let resetBtn = document.querySelector("#reset-btn");
 let turnO = true;//PLAYER X , PLAYER O
+let count = 0; //To Track Draw
 let newgamebtn = document.querySelector("#new");
 let msgcontainer = document.querySelector(".msg-container");
 let msg= document.querySelector("#msg")
@@ -28,8 +29,20 @@ boxes.forEach((box) => {
         }
         box.disabled = true;
         checkwinner();
+        count++;
+        let isWinner = checkwinner();
+
+    if (count === 9 && !isWinner) { //for checking draw or not
+      gameDraw();
+    }
 
     })
+//game draw logic 
+    const gameDraw = () => {
+  msg.innerText = `Game was a Draw`;
+  msgcontainer.classList.remove("hide");
+  disablebox();
+};
 
 })
 //logic for disabling boxes after winner is declared
@@ -55,7 +68,6 @@ const checkwinner = () => {
 
         if (box1value!="" && box2value!="" && box3value!=""){
             if (box1value===box2value && box2value===box3value){
-                console.log("winner",box1value);
                 showwinner(box1value);
             }
         }
@@ -66,7 +78,7 @@ const checkwinner = () => {
 const enablebox = ()=>{
     for(let box of boxes){
         box.disabled=false;
-        box.innerHTML=" ";
+        box.innerText="";
     }
 }
 
@@ -74,6 +86,7 @@ const enablebox = ()=>{
 const reset=()=>{
     turnO=true;
     enablebox();
+    count = 0;
     msgcontainer.classList.add("hide");
 }
 newgamebtn.addEventListener("click ",reset);
